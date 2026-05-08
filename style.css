@@ -1,0 +1,470 @@
+body {
+    background-color: #0f0f0f;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #eee; /* світлий текст */
+}
+h1, h2 {
+    text-shadow: 0 0 10px rgba(255,0,0,0.5);
+}
+
+/* ================= HEADER ================= */
+.site-header {
+    background: linear-gradient(90deg, #111, #1a0000, #111);
+    border-bottom: 2px solid red;
+    padding: 0 20px;
+    border-radius: 30px 30px 0 0;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+
+    display: flex;
+    align-items: center;
+    justify-content: center; /* центрує меню */
+
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index:1001;
+}
+
+.site-header h1{
+    position: absolute;
+    left: 20px;
+}
+
+.main-menu{
+    flex:1;
+    display:flex;
+    justify-content:center;
+}
+/* Прибираємо стандартні відступи списку */
+.main-menu ul {
+    list-style: none; /* Забирає кружечки біля пунктів */
+    margin: 0; /* Прибирає зовнішній відступ */
+    padding: 0; /* Прибирає внутрішній відступ */
+    display: flex; /* Робить елементи списку горизонтальними */
+    justify-content: center; /* Вирівнює меню по центру */
+}
+
+/* Стилі для кожного пункту меню */
+.main-menu li {
+    margin: 0 15px; /* Відстань між пунктами меню */
+}
+
+/* Стилі для посилань */
+.main-menu a {
+    text-decoration: none; /* Прибирає підкреслення посилань */
+    color: whitesmoke; /* Темно-сірий колір тексту */
+    font-size: 18px; /* Розмір тексту */
+    padding: 15px 10px; /* Внутрішні відступи (зверху/знизу та зліва/справа) */
+    display: block; /* Робить посилання блоком, щоб працювали відступи */
+    transition: 0.3s; /* Плавна анімація при наведенні */
+}
+
+/* Ефект при наведенні */
+.main-menu a:hover {
+    color: #ff2a2a;
+    text-shadow: 0 0 10px red;
+}
+/* Анімація пульсації заголовка */
+@keyframes pulseTitle {
+    0% { transform: scale(1); color: #fff;}
+    50% { transform: scale(1.01); color: #aaa;}
+    100% { transform: scale(1); color: #fff;}
+}
+/*.logo{
+    position: absolute;
+    right: 30px;
+}*/
+html {
+    scroll-behavior: smooth;
+}                       
+/* Контейнер кошика */
+.cart-logo {
+    position: fixed;       /* фіксуємо у верхньому правому куті */
+    top: 3px;
+    right: 210px;
+    width: 50px;           /* маленький логотип */
+    height: 50px;
+    display: inline-block;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+/* Картинка кошика */
+.cart-logo .cart-img {
+    width: 130%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.cart-logo .cart-count {
+    background-color: red;
+    color: white;
+
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 50%;
+
+    width: 18px;
+    height: 20px;
+
+    display: inline-block; /* ВАЖЛИВО — тепер width/height працюють */
+
+    line-height: 20px;
+    text-align: center;
+
+    position: relative;
+    top: -50px;
+    left: 45px;
+}
+
+
+
+/* ================= BANNER ================= */
+
+.banner{
+    width:50%;
+    height:400px;
+    overflow:hidden;
+    position:relative;
+    left: 465px;
+    margin-top: 100px;
+    border-radius: 25px;
+
+}
+
+/* контейнер слайдов */
+.slider{
+    width:100%;
+    height:100%;
+    position:relative;
+}
+
+/* картинки */
+.slide{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+    position:absolute;
+    top:0;
+    left:0;
+
+    opacity:0;
+    transition:opacity 0.6s ease;
+}
+
+/* активный */
+.slide.active{
+    opacity:1;
+}
+
+/* затемнение поверх баннера */
+.banner::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.2);
+    pointer-events:none;
+}
+
+/* кнопки */
+.prev,
+.next{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+
+    width:45px;
+    height:45px;
+
+    border:none;
+    border-radius:50%;
+
+    background:rgba(0,0,0,0.45);
+    color:white;
+
+    font-size:26px;
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    transition:0.25s;
+}
+
+/* hover эффект */
+.prev:hover,
+.next:hover{
+    background:rgba(255,255,255,0.2);
+    transform:translateY(-50%) scale(1.1);
+}
+
+/* позиции */
+.prev{
+    left:20px;
+}
+
+.next{
+    right:20px;
+}
+
+
+/* ================= DESCRIPTION ================= */
+.description {
+    max-width: 700px;
+    margin: 30px auto 20px auto;
+    background-color: #2b2b2b;
+    border-radius: 30px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+/* ================= CATEGORY SECTION ================= */
+.category-section {
+    padding: 20px;
+    text-align: center;
+}
+
+.category-section h2 {
+    color: #ddd;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* ================= PRODUCTS ================= */
+.products-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    background: #161616;
+    border: 1px solid #3a0000;
+    border-radius: 25px;
+    width: 260px;
+    min-height: 480px;
+    padding: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+    text-align: center;
+     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255,0,0,0.4);
+    z-index:1;
+}
+
+.product-card img {
+    width: 100%;
+    height: 220px; /* однакова висота */
+    object-fit: cover; /* обрізає красиво */
+    border-radius: 20px;
+}
+
+.product-card h3 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+/* ================= BUTTONS ================= */
+/* Кнопка */
+.button {
+  --main-focus: #ff0000;
+  --font-color: #dedede;
+  --bg-color-sub: #222;
+  --bg-color: #1a1a1a;
+  --main-color: #dedede;
+  position: relative;
+  width: 220px; /* нова ширина */
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--main-color);
+  box-shadow: 4px 4px var(--main-color);
+  background-color: var(--bg-color);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+/* Текст кнопки */
+.button .button__text {
+  transform: translateX(25px);
+  color: var(--font-color);
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+/* Іконка кнопки */
+.button .button__icon {
+  position: absolute;
+  transform: translateX(169px); /* підлаштовано під ширину 220px */
+  height: 100%;
+  width: 39px;
+  background-color: var(--bg-color-sub);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+/* SVG всередині кнопки */
+.button .svg {
+  width: 20px;
+  stroke: var(--main-color);
+}
+
+/* Наведення */
+.button:hover {
+  background: var(--bg-color);
+}
+
+.button:hover .button__text {
+  color: transparent;
+}
+
+.button:hover .button__icon {
+  width: 218px; /* ширина анімації під нову ширину кнопки */
+  transform: translateX(0);
+}
+
+/* Натискання */
+.button:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0px 0px var(--main-color);
+}
+
+/* ================= FOOTER ================= */
+.site-footer {
+    background: #111;
+    border-top: 2px solid red;
+    text-align: center;
+    padding: 30px 20px;
+    background-color: #2b2b2b;
+    border-radius: 0 0 30px 30px;
+    box-shadow: 0 -6px 20px rgba(0,0,0,0.4);
+}
+
+.site-footer p {
+    margin: 5px 0;
+    color: #ccc;
+}
+
+
+/* Пульсація банера */
+/*@keyframes pulseBanner {
+    0%   { transform: scale(1); box-shadow: 0 10px 30px rgba(0,0,0,0.5);}
+    50%  { transform: scale(1.1); box-shadow: 0 15px 40px rgba(0,0,0,0.7);}
+    100% { transform: scale(1); box-shadow: 0 10px 30px rgba(0,0,0,0.5);}
+}*/
+
+/* ===================== СЕКЦІЯ СПОРТ ===================== */
+
+/* Даємо секції додатковий клас sport */
+.category-section.sport .section-title {
+    color: #e67e22; /* помаранчевий колір заголовка */
+}
+/* ================= MODAL ================= */
+
+.product-modal{
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,0.8);
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 5000;
+}
+
+.modal-content{
+    width: 80%;
+    max-width: 1200px;
+
+    background: #161616;
+
+    border-radius: 25px;
+
+    padding: 30px;
+
+    display: flex;
+    gap: 40px;
+
+    position: relative;
+}
+
+.close-modal{
+    position: absolute;
+    top: 15px;
+    right: 25px;
+
+    font-size: 40px;
+    cursor: pointer;
+    color: white;
+}
+
+.modal-gallery{
+    width: 50%;
+}
+
+.main-modal-image{
+    width: 100%;
+    height: 450px;
+
+    object-fit: cover;
+
+    border-radius: 20px;
+}
+
+.modal-small-images{
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.modal-small-images img{
+    width: 100px;
+    height: 100px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+.modal-info{
+    width: 50%;
+}
+
+#modalTitle{
+    font-size: 36px;
+}
+
+#modalPrice{
+    color: red;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#modalDescription{
+    line-height: 1.8;
+    font-size: 18px;
+}

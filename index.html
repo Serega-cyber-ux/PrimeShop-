@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Каталог</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+
+    
+
+    <main>
+
+         <!-- ================= HEADER ================= -->
+    <!-- Логотип + меню -->
+    <header class="site-header">
+        <h1>Мій магазин</h1>
+        <div class="logo">
+    <div class="cart-logo" onclick="goToCart()">
+        <img src="cart.png" alt="Кошик" class="cart-img">
+        <span id="cartCount" class="cart-count">0</span>
+    </div>
+</div>
+
+        <nav class="main-menu">
+            <ul>
+                <li><a href="#tech">Техніка</a></li>
+                <li><a href="#clothes">Одяг</a></li>
+                <li><a href="#toys">Іграшки</a></li>
+                <li><a href="#sport">Спорт</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ================= BANNER ================= -->
+    <!-- Рекламний блок -->
+    <div class="banner">
+
+    <!-- Контейнер каруселі -->
+    <div class="slider">
+
+        <!-- Слайди -->
+        <img src="soldout.png" class="slide active">
+        <img src="techno.png" class="slide">
+        <img src="kredit.png" class="slide">
+
+    </div>
+
+    <!-- Кнопки -->
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+
+</div>
+
+    <!-- ================= DESCRIPTION ================= -->
+    <!-- Короткий опис магазину -->
+    <section class="description">
+        <h2>Про наш магазин</h2>
+        <p>
+            У нашому магазині ви знайдете якісну техніку, стильний одяг та цікаві іграшки
+            за доступними цінами. Швидка доставка та вигідні пропозиції щодня!
+        </p>
+    </section>
+
+    <!-- ================= CATEGORY 1 ================= -->
+    <!-- Техніка -->
+    <section id="tech" class="category-section">
+    <h2>Техніка</h2>
+    <div class="products-container">
+        <div class="product-card">
+            <img src="tech1.jpg" alt="Ноутбук">
+            <h3>Ноутбук</h3>
+            <p class="product-price">Ціна: 49999 грн</p>
+            <button type="button" class="button add-to-cart-btn" data-name="Ноутбук" data-price="49999">
+                <span class="button__text">Додати до кошика</span>
+                <span class="button__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                        <line y2="19" y1="5" x2="12" x1="12"></line>
+                        <line y2="12" y1="12" x2="19" x1="5"></line>
+                    </svg>
+                </span>
+            </button>
+        </div>
+
+        <div class="product-card">
+            <img src="tech2.jpg" alt="Навушники">
+            <h3>Навушники</h3>
+            <p class="product-price">Ціна: 9800 грн</p>
+            <button type="button" class="button add-to-cart-btn" data-name="Навушники" data-price="9800">
+                <span class="button__text">Додати до кошика</span>
+                <span class="button__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                        <line y2="19" y1="5" x2="12" x1="12"></line>
+                        <line y2="12" y1="12" x2="19" x1="5"></line>
+                    </svg>
+                </span>
+            </button>
+        </div>
+
+        <div class="product-card">
+            <img src="tech3.jpg" alt="Смартфон">
+            <h3>Смартфон</h3>
+            <p class="product-price">Ціна: 45999 грн</p>
+            <button type="button" class="button add-to-cart-btn" data-name="Смартфон" data-price="45999">
+                <span class="button__text">Додати до кошика</span>
+                <span class="button__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                        <line y2="19" y1="5" x2="12" x1="12"></line>
+                        <line y2="12" y1="12" x2="19" x1="5"></line>
+                    </svg>
+                </span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- ================= CATEGORY: Одяг ================= -->
+<section id="clothes" class="category-section">
+    <h2>Одяг</h2>
+    <div class="products-container">
+
+        <div class="product-card">
+            <img src="clothes1.jpg" alt="Футболка">
+            <h3>Футболка</h3>
+            <p class="product-price">Ціна: 1199 грн</p>
+            <button type="button" class="button add-to-cart-btn" data-name="Футболка" data-price="1199">
+                <span class="button__text">Додати до кошика</span>
+                <span class="button__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                        <line y2="19" y1="5" x2="12" x1="12"></line>
+                        <line y2="12" y1="12" x2="19" x1="5"></line>
+                    </svg>
+                </span>
+            </button>
+        </div>
+
+        <div class="product-card">
+            <img src="clothes2.jpg" alt="Джинси">
+            <h3>Джинси</h3>
+            <p class="product-price">Ціна: 1199 грн</p>
+            <button type="button" class="button add-to-cart-btn" data-name="Джинси" data-price="1199">
+                <span class="button__text">Додати до кошика</span>
+                <span class="button__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                        <line y2="19" y1="5" x2="12" x1="12"></line>
+                        <line y2="12" y1="12" x2="19" x1="5"></line>
+                    </svg>
+                </span>
+            </button>
+        </div>
+
+        <div class="product-card">
+            <img src="clothes3.jpg" alt="Кросівки">
+            <h3>Кросівки</h3>
+            <p class="product-price">Ціна: 1199 грн</p>
+            <button type="button" class="button add-to-cart-btn" data-name="Кросівки" data-price="1199">
+                <span class="button__text">Додати до кошика</span>
+                <span class="button__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                        <line y2="19" y1="5" x2="12" x1="12"></line>
+                        <line y2="12" y1="12" x2="19" x1="5"></line>
+                    </svg>
+                </span>
+            </button>
+        </div>
+
+    </div>
+</section>
+
+    <!-- ================= CATEGORY: Іграшки ================= -->
+<section id="toys" class="category-section">
+    <h2>Іграшки</h2>
+    <div class="products-container">
+
+        <div class="product-card">
+            <img src="toys1.jpg" alt="Іграшкова машинка">
+            <h3>Іграшкова машинка</h3>
+            <p class="product-price">Ціна: 1199 грн</p>
+            <button type="button" class="button add-to-cart-btn" data-name="Іграшкова машинка" data-price="1199">
+                <span class="button__text">Додати до кошика</span>
+                <span class="button__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                        <line y2="19" y1="5" x2="12" x1="12"></line>
+                        <line y2="12" y1="12" x2="19" x1="5"></line>
+                    </svg>
+                </span>
+            </button>
+        </div>
+
+        <div class="product-card">
+            <img src="toys2.jpg" alt="Лялька">
+            <h3>Лялька</h3>
+            <p class="product-price">Ціна: 1199 грн</p>
+            <button type="button" class="button add-to-cart-btn" data-name="Лялька" data-price="1199">
+                <span class="button__text">Додати до кошика</span>
+                <span class="button__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                        <line y2="19" y1="5" x2="12" x1="12"></line>
+                        <line y2="12" y1="12" x2="19" x1="5"></line>
+                    </svg>
+                </span>
+            </button>
+        </div>
+
+        <div class="product-card">
+            <img src="toys3.jpg" alt="Пазли">
+            <h3>Пазли</h3>
+            <p class="product-price">Ціна: 199 грн</p>
+            <button type="button" class="button add-to-cart-btn" data-name="Пазли" data-price="199">
+                <span class="button__text">Додати до кошика</span>
+                <span class="button__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                        <line y2="19" y1="5" x2="12" x1="12"></line>
+                        <line y2="12" y1="12" x2="19" x1="5"></line>
+                    </svg>
+                </span>
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<!-- ================= CATEGORY: Спорт ================= -->
+<section id="sport" class="category-section sport">
+    <h2 class="section-title">Спорт</h2>
+    <div class="products-container">
+
+        <div class="product-card">
+            <img src="ball.jpg" alt="Футбольний м'яч">
+            <h3>Футбольний м'яч</h3>
+            <p class="product-price">Ціна: 899 грн</p>
+            <button type="button" class="button add-to-cart-btn" data-name="Футбольний м'яч" data-price="899">
+                <span class="button__text">Додати до кошика</span>
+                <span class="button__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                        <line y2="19" y1="5" x2="12" x1="12"></line>
+                        <line y2="12" y1="12" x2="19" x1="5"></line>
+                    </svg>
+                </span>
+            </button>
+        </div>
+
+        <div class="product-card">
+            <img src="racket.jpg" alt="Тенісна ракетка">
+            <h3>Тенісна ракетка</h3>
+            <p class="product-price">Ціна: 1499 грн</p>
+            <button type="button" class="button add-to-cart-btn" data-name="Тенісна ракетка" data-price="1499">
+                <span class="button__text">Додати до кошика</span>
+                <span class="button__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                        <line y2="19" y1="5" x2="12" x1="12"></line>
+                        <line y2="12" y1="12" x2="19" x1="5"></line>
+                    </svg>
+                </span>
+            </button>
+        </div>
+
+        <div class="product-card">
+            <img src="dumbbells.jpg" alt="Гантелі">
+            <h3>Гантелі 15 кг</h3>
+            <p class="product-price">Ціна: 1199 грн</p>
+            <button type="button" class="button add-to-cart-btn" data-name="Гантелі 15 кг" data-price="1199">
+                <span class="button__text">Додати до кошика</span>
+                <span class="button__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                        <line y2="19" y1="5" x2="12" x1="12"></line>
+                        <line y2="12" y1="12" x2="19" x1="5"></line>
+                    </svg>
+                </span>
+            </button>
+        </div>
+        <!-- ================= MODAL ================= -->
+
+<div class="product-modal" id="productModal">
+
+    <div class="modal-content">
+
+        <!-- кнопка закриття -->
+        <span class="close-modal">&times;</span>
+
+        <!-- ліва частина -->
+        <div class="modal-gallery">
+
+            <img src="" id="mainModalImage" class="main-modal-image">
+
+            <div class="modal-small-images">
+                <img src="" class="small-modal-img">
+                <img src="" class="small-modal-img">
+                <img src="" class="small-modal-img">
+            </div>
+
+        </div>
+
+        <!-- права частина -->
+        <div class="modal-info">
+
+            <h2 id="modalTitle"></h2>
+
+            <p id="modalPrice"></p>
+
+            <p id="modalDescription">
+                Тут буде великий опис товару.
+            </p>
+
+            <button class="button">
+                <span class="button__text">Купити</span>
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+    </div>
+</section>
+
+    <!-- ================= FOOTER ================= -->
+    <!-- Контакти + авторські права -->
+    <footer class="site-footer">
+        <p>Контакти: info@mystore.ua | +380 00 000 00 00</p>
+        <p>&copy; 2026 Мій магазин. Усі права захищені.</p>
+    </footer>
+
+    </main>
+<script src="script.js"></script>
+</body>
+</html>
