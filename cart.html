@@ -1,21 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="uk">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Кошик</title>
-    <link rel="stylesheet" href="cart.css"> <!-- Підключення окремого CSS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кошик</title>
+    <link rel="stylesheet" href="cart.css">
 </head>
 <body>
-    <a href="index.html">Головна</a>
-    <h1>Ваш кошик</h1>
-    <button id="clearCart">Очистити кошик</button>
 
-    <!-- Контейнер для товарів -->
-    <div id="cartContainer"></div>
-    
-    
+<header class="cart-header">
+    <a href="index.html" class="back-link">← До магазину</a>
 
-<script src="script.js"></script> 
+    <a href="index.html" class="site-logo">
+    <img src="logo.png" alt="PrimeShop">
+</a>
+
+    <button id="themeToggle" class="cart-theme-btn" type="button">
+        ☀️
+    </button>
+</header>
+
+<main class="cart-page">
+
+    <section class="cart-left">
+        <h2>Ваш кошик</h2>
+        <div id="cartContainer"></div>
+    </section>
+
+    <aside class="cart-summary">
+        <h2>Підсумок</h2>
+
+        <div class="summary-row">
+            <span>Товари:</span>
+            <b id="itemsCount">0</b>
+        </div>
+
+        <div class="summary-row">
+            <span>Сума:</span>
+            <b id="subtotal">0 грн</b>
+        </div>
+
+        <div class="summary-row discount">
+            <span>Знижка:</span>
+            <b id="discount">0 грн</b>
+        </div>
+
+        <div class="summary-row">
+            <span>Доставка:</span>
+            <b>Безкоштовно</b>
+        </div>
+
+        <hr>
+
+        <div class="summary-total">
+            <span>Разом:</span>
+            <b id="totalPrice">0 грн</b>
+        </div>
+
+        <button class="checkout-btn">Оформити замовлення</button>
+        <button id="clearCart" class="clear-btn">Очистити кошик</button>
+    </aside>
+
+</main>
+
+<script src="script.js"></script>
 </body>
 </html>

@@ -6,7 +6,72 @@
     <title>Каталог</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+<div id="toastContainer"></div>
+<div class="product-modal" id="productModal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+
+        <div class="modal-gallery">
+            <img src="" id="mainModalImage" class="main-modal-image">
+
+            <div class="modal-small-images" id="modalSmallImages"></div>
+        </div>
+
+        <div class="modal-info">
+            <h2 id="modalTitle"></h2>
+            <p id="modalPrice"></p>
+            <p id="modalDescription"></p>
+
+            <button
+    type="button"
+    class="button modal-cart-btn"
+>
+
+    <span class="button__text">
+        Додати до кошика
+    </span>
+
+    <span class="button__icon">
+
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke-linejoin="round"
+            stroke-linecap="round"
+            stroke="currentColor"
+            height="24"
+            fill="none"
+            class="svg"
+        >
+
+            <line
+                y2="19"
+                y1="5"
+                x2="12"
+                x1="12"
+            ></line>
+
+            <line
+                y2="12"
+                y1="12"
+                x2="19"
+                x1="5"
+            ></line>
+
+        </svg>
+
+    </span>
+
+</button>
+        </div>
+    </div>
+</div>
+
 <body>
+
+
 
 
     
@@ -16,11 +81,19 @@
          <!-- ================= HEADER ================= -->
     <!-- Логотип + меню -->
     <header class="site-header">
-        <h1>Мій магазин</h1>
+        <a href="index.html" class="site-logo">
+    <img src="logo.png" alt="PrimeShop">
+</a>
         <div class="logo">
-    <div class="cart-logo" onclick="goToCart()">
-        <img src="cart.png" alt="Кошик" class="cart-img">
-        <span id="cartCount" class="cart-count">0</span>
+    <button id="themeToggle" class="theme-btn" type="button">
+    ☀️
+</button>
+
+<div class="cart-logo" onclick="goToCart()">
+    <img src="cart.png" alt="Кошик" class="cart-img" id="cartImage">
+    <span id="cartCount" class="cart-count">0</span>
+</div>
+
     </div>
 </div>
 
@@ -66,53 +139,219 @@
 
     <!-- ================= CATEGORY 1 ================= -->
     <!-- Техніка -->
-    <section id="tech" class="category-section">
+    <!-- Техніка -->
+<section id="tech" class="category-section">
     <h2>Техніка</h2>
+
     <div class="products-container">
-        <div class="product-card">
-            <img src="tech1.jpg" alt="Ноутбук">
-            <h3>Ноутбук</h3>
-            <p class="product-price">Ціна: 49999 грн</p>
-            <button type="button" class="button add-to-cart-btn" data-name="Ноутбук" data-price="49999">
-                <span class="button__text">Додати до кошика</span>
-                <span class="button__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
-                        <line y2="19" y1="5" x2="12" x1="12"></line>
-                        <line y2="12" y1="12" x2="19" x1="5"></line>
-                    </svg>
-                </span>
-            </button>
-        </div>
 
-        <div class="product-card">
-            <img src="tech2.jpg" alt="Навушники">
-            <h3>Навушники</h3>
-            <p class="product-price">Ціна: 9800 грн</p>
-            <button type="button" class="button add-to-cart-btn" data-name="Навушники" data-price="9800">
-                <span class="button__text">Додати до кошика</span>
-                <span class="button__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
-                        <line y2="19" y1="5" x2="12" x1="12"></line>
-                        <line y2="12" y1="12" x2="19" x1="5"></line>
-                    </svg>
-                </span>
-            </button>
-        </div>
+<!-- ================= ТЕХНІКА ================= -->
 
-        <div class="product-card">
-            <img src="tech3.jpg" alt="Смартфон">
-            <h3>Смартфон</h3>
-            <p class="product-price">Ціна: 45999 грн</p>
-            <button type="button" class="button add-to-cart-btn" data-name="Смартфон" data-price="45999">
-                <span class="button__text">Додати до кошика</span>
-                <span class="button__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
-                        <line y2="19" y1="5" x2="12" x1="12"></line>
-                        <line y2="12" y1="12" x2="19" x1="5"></line>
-                    </svg>
-                </span>
-            </button>
-        </div>
+<div class="product-card"
+     data-images="tech1.jpg,tech1-2.jpg,tech1-3.jpg"
+     data-description="Потужний ноутбук для навчання, роботи та ігор. Має швидкий SSD-накопичувач, якісний дисплей, сучасний дизайн та добре підходить для щоденного використання.">
+
+    <img src="tech1.jpg" alt="Ноутбук">
+
+    <h3> Ноутбук Apple</h3>
+
+    <p class="product-short-info">
+        Потужний ноутбук для навчання, роботи та ігор
+    </p>
+
+    
+    <p class="product-old-price">59 999 грн</p>
+<p class="product-price" data-old-price="59999">49999 грн</p>
+<span class="discount-badge">-17%</span>
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Ноутбук"
+        data-price="49999">
+
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="tech2.jpg,tech2-2.jpg,tech2-3.jpg"
+     data-description="Бездротові навушники з чистим звуком, шумопоглинанням та довгим часом роботи від батареї.">
+
+    <img src="tech2.jpg" alt="Навушники">
+
+    <h3>Навушники AirPods</h3>
+
+    <p class="product-short-info">
+        Бездротові навушники з чистим звуком
+    </p>
+
+    <p class="product-old-price">23 999 грн</p>
+<p class="product-price" data-old-price="23999">9800 грн</p>
+<span class="discount-badge">-13%</span>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Навушники"
+        data-price="9800">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="tech3.jpg,tech3-2.jpg,tech3-3.jpg"
+     data-description="Сучасний смартфон із потужним процесором, якісною камерою та яскравим AMOLED-дисплеєм.">
+
+    <img src="tech3.jpg" alt="Смартфон">
+
+    <h3>Смартфон iPhone 16</h3>
+
+    <p class="product-short-info">
+        Смартфон із потужною камерою та AMOLED
+    </p>
+
+    <p class="product-price">45999 грн</p>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Смартфон"
+        data-price="45999">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="tablet.jpg,tablet-2.jpg,tablet-3.jpg"
+     data-description="Зручний планшет для навчання, перегляду відео та роботи в інтернеті. Має великий екран та швидку систему.">
+
+    <img src="tablet.jpg" alt="Планшет">
+
+    <h3>Планшет Ipad</h3>
+
+    <p class="product-short-info">
+        Великий екран для навчання та відео
+    </p>
+
+    <p class="product-price">18999 грн</p>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Планшет"
+        data-price="18999">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="watch.jpg,watch-2.jpg,watch-3.jpg"
+     data-description="Смарт-годинник із моніторингом здоров’я, повідомленнями та спортивними режимами.">
+
+    <img src="watch.jpg" alt="Смарт-годинник">
+
+    <h3>Смарт-часи Apple Watch</h3>
+
+    <p class="product-short-info">
+        Контроль здоров’я та спортивні режими
+    </p>
+
+    <p class="product-price">6999 грн</p>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Смарт-годинник"
+        data-price="6999">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="monitor.jpg,monitor-2.jpg,monitor-3.jpg"
+     data-description="Великий монітор із високою якістю зображення та плавною частотою оновлення для ігор і роботи.">
+
+    <img src="monitor.jpg" alt="Монітор">
+
+    <h3>Monitor</h3>
+
+    <p class="product-short-info">
+        Висока якість зображення для роботи та ігор
+    </p>
+
+    <p class="product-old-price">15 999 грн</p>
+<p class="product-price" data-old-price="15999">12999 грн</p>
+<span class="discount-badge">-19%</span>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Монітор"
+        data-price="12999">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="mouse.jpg,mouse-2.jpg,mouse-3.jpg"
+     data-description="Ігрова мишка з високою точністю сенсора, RGB-підсвіткою та ергономічним дизайном.">
+
+    <img src="mouse.jpg" alt="Мишка">
+
+    <h3>Gaming mouse</h3>
+
+    <p class="product-short-info">
+        Точний сенсор та ергономічний дизайн
+    </p>
+
+    <p class="product-price">1499 грн</p>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Мишка"
+        data-price="1499">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="speaker.jpg,speaker-2.jpg,speaker-3.jpg"
+     data-description="Портативна Bluetooth-колонка з гучним звуком, басами та тривалою автономною роботою.">
+
+    <img src="speaker.jpg" alt="Колонка">
+
+    <h3>Column</h3>
+
+    <p class="product-short-info">
+        Гучний звук та потужні баси
+    </p>
+
+    <p class="product-price">3299 грн</p>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Колонка"
+        data-price="3299">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
     </div>
 </section>
 
@@ -121,50 +360,212 @@
     <h2>Одяг</h2>
     <div class="products-container">
 
-        <div class="product-card">
-            <img src="clothes1.jpg" alt="Футболка">
-            <h3>Футболка</h3>
-            <p class="product-price">Ціна: 1199 грн</p>
-            <button type="button" class="button add-to-cart-btn" data-name="Футболка" data-price="1199">
-                <span class="button__text">Додати до кошика</span>
-                <span class="button__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
-                        <line y2="19" y1="5" x2="12" x1="12"></line>
-                        <line y2="12" y1="12" x2="19" x1="5"></line>
-                    </svg>
-                </span>
-            </button>
-        </div>
+        <div class="product-card"
+     data-images="clothes1.jpg,clothes1-2.jpg,clothes1-3.jpg"
+     data-description="Стильна футболка з якісної тканини для щоденного носіння та комфортного стилю.">
 
-        <div class="product-card">
-            <img src="clothes2.jpg" alt="Джинси">
-            <h3>Джинси</h3>
-            <p class="product-price">Ціна: 1199 грн</p>
-            <button type="button" class="button add-to-cart-btn" data-name="Джинси" data-price="1199">
-                <span class="button__text">Додати до кошика</span>
-                <span class="button__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
-                        <line y2="19" y1="5" x2="12" x1="12"></line>
-                        <line y2="12" y1="12" x2="19" x1="5"></line>
-                    </svg>
-                </span>
-            </button>
-        </div>
+    <img src="clothes1.jpg" alt="Футболка">
 
-        <div class="product-card">
-            <img src="clothes3.jpg" alt="Кросівки">
-            <h3>Кросівки</h3>
-            <p class="product-price">Ціна: 1199 грн</p>
-            <button type="button" class="button add-to-cart-btn" data-name="Кросівки" data-price="1199">
-                <span class="button__text">Додати до кошика</span>
-                <span class="button__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
-                        <line y2="19" y1="5" x2="12" x1="12"></line>
-                        <line y2="12" y1="12" x2="19" x1="5"></line>
-                    </svg>
-                </span>
-            </button>
-        </div>
+    <h3>Футболка</h3>
+
+    <p class="product-short-info">
+        Стильна футболка для щоденного носіння
+    </p>
+
+    <p class="product-price">1199 грн</p>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Футболка"
+        data-price="1199">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="clothes2.jpg,clothes2-2.jpg,clothes2-3.jpg"
+     data-description="Сучасні джинси з якісного деніму, які добре підходять для повсякденного стилю.">
+
+    <img src="clothes2.jpg" alt="Джинси">
+
+    <h3>Джинси</h3>
+
+    <p class="product-short-info">
+        Сучасний стиль та якісний денім
+    </p>
+
+    <p class="product-price">1199 грн</p>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Джинси"
+        data-price="1199">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="clothes3.jpg,clothes3-2.jpg,clothes3-3.jpg"
+     data-description="Комфортні кросівки для прогулянок, спорту та активного щоденного використання.">
+
+    <img src="clothes3.jpg" alt="Кросівки">
+
+    <h3>Кросівки</h3>
+
+    <p class="product-short-info">
+        Комфорт для спорту та прогулянок
+    </p>
+
+    <p class="product-price">1199 грн</p>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Кросівки"
+        data-price="1199">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="hoodie.jpg,hoodie-2.jpg,hoodie-3.jpg"
+     data-description="Тепле худі з м’якої тканини, що чудово підходить для прохолодної погоди.">
+
+    <img src="hoodie.jpg" alt="Худі">
+
+    <h3>Худі</h3>
+
+    <p class="product-short-info">
+        Тепле худі для прохолодної погоди
+    </p>
+
+    <p class="product-old-price">4 999 грн</p>
+
+<p class="product-price" data-old-price="4999">
+    3799 грн
+</p>
+
+<span class="discount-badge">
+    -24%
+</span>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Худі"
+        data-price="1799">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="jacket.jpg,jacket-2.jpg,jacket-3.jpg"
+     data-description="Стильна куртка з сучасним дизайном та хорошим захистом від холоду.">
+
+    <img src="jacket.jpg" alt="Куртка">
+
+    <h3>Куртка</h3>
+
+    <p class="product-short-info">
+        Стильна куртка із захистом від холоду
+    </p>
+
+    <p class="product-price">3499 грн</p>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Куртка"
+        data-price="3499">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="pants.jpg,pants-2.jpg,pants-3.jpg"
+     data-description="Комфортні штани для прогулянок, навчання та повсякденного носіння.">
+
+    <img src="pants.jpg" alt="Штани">
+
+    <h3>Штани</h3>
+
+    <p class="product-short-info">
+        Комфортні штани для щоденного стилю
+    </p>
+
+    <p class="product-price">1899 грн</p>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Штани"
+        data-price="1899">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="shirt.jpg,shirt-2.jpg,shirt-3.jpg"
+     data-description="Класична сорочка з приємної тканини для стильного та акуратного образу.">
+
+    <img src="shirt.jpg" alt="Сорочка">
+
+    <h3>Сорочка</h3>
+
+    <p class="product-short-info">
+        Класичний стиль та приємна тканина
+    </p>
+
+    <p class="product-price">1599 грн</p>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Сорочка"
+        data-price="1599">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="sneakers.jpg,sneakers-2.jpg,sneakers-3.jpg"
+     data-description="Модні кеди з м’якою підошвою та сучасним дизайном для щоденного використання.">
+
+    <img src="sneakers.jpg" alt="Кеди">
+
+    <h3>Кеди</h3>
+
+    <p class="product-short-info">
+        Модний дизайн та м’яка підошва
+    </p>
+
+    <p class="product-price">2799 грн</p>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Кеди"
+        data-price="2799">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
 
     </div>
 </section>
@@ -174,51 +575,212 @@
     <h2>Іграшки</h2>
     <div class="products-container">
 
-        <div class="product-card">
-            <img src="toys1.jpg" alt="Іграшкова машинка">
-            <h3>Іграшкова машинка</h3>
-            <p class="product-price">Ціна: 1199 грн</p>
-            <button type="button" class="button add-to-cart-btn" data-name="Іграшкова машинка" data-price="1199">
-                <span class="button__text">Додати до кошика</span>
-                <span class="button__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
-                        <line y2="19" y1="5" x2="12" x1="12"></line>
-                        <line y2="12" y1="12" x2="19" x1="5"></line>
-                    </svg>
-                </span>
-            </button>
-        </div>
+        <div class="product-card"
+     data-images="toys1.jpg,toys1-2.jpg,toys1-3.jpg"
+     data-description="Яскрава іграшкова машинка для веселих ігор та колекціонування.">
 
-        <div class="product-card">
-            <img src="toys2.jpg" alt="Лялька">
-            <h3>Лялька</h3>
-            <p class="product-price">Ціна: 1199 грн</p>
-            <button type="button" class="button add-to-cart-btn" data-name="Лялька" data-price="1199">
-                <span class="button__text">Додати до кошика</span>
-                <span class="button__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
-                        <line y2="19" y1="5" x2="12" x1="12"></line>
-                        <line y2="12" y1="12" x2="19" x1="5"></line>
-                    </svg>
-                </span>
-            </button>
-        </div>
+    <img src="toys1.jpg" alt="Іграшкова машинка">
 
-        <div class="product-card">
-            <img src="toys3.jpg" alt="Пазли">
-            <h3>Пазли</h3>
-            <p class="product-price">Ціна: 199 грн</p>
-            <button type="button" class="button add-to-cart-btn" data-name="Пазли" data-price="199">
-                <span class="button__text">Додати до кошика</span>
-                <span class="button__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
-                        <line y2="19" y1="5" x2="12" x1="12"></line>
-                        <line y2="12" y1="12" x2="19" x1="5"></line>
-                    </svg>
-                </span>
-            </button>
-        </div>
+    <h3>Іграшкова машинка</h3>
 
+    <p class="product-short-info">
+        Яскрава машинка для веселих ігор
+    </p>
+
+    <p class="product-old-price">2 999 грн</p>
+
+<p class="product-price" data-old-price="2999">
+    2199 грн
+</p>
+
+<span class="discount-badge">
+    -27%
+</span>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Іграшкова машинка"
+        data-price="1199">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="toys2.jpg,toys2-2.jpg,toys2-3.jpg"
+     data-description="Красива лялька з деталізованим одягом та аксесуарами для дітей.">
+
+    <img src="toys2.jpg" alt="Лялька">
+
+    <h3>Лялька</h3>
+
+    <p class="product-short-info">
+        Деталізований одяг та аксесуари
+    </p>
+
+    <p class="product-price">1199 грн</p>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Лялька"
+        data-price="1199">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="toys3.jpg,toys3-2.jpg,toys3-3.jpg"
+     data-description="Цікаві пазли для розвитку логіки, уважності та веселого проведення часу.">
+
+    <img src="toys3.jpg" alt="Пазли">
+
+    <h3>Пазли</h3>
+
+    <p class="product-short-info">
+        Розвиток логіки та уважності
+    </p>
+
+    <p class="product-price">199 грн</p>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Пазли"
+        data-price="199">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="lego.jpg,lego-2.jpg,lego-3.jpg"
+     data-description="Конструктор із великою кількістю деталей для творчих і захопливих збірок.">
+
+    <img src="lego.jpg" alt="Конструктор">
+
+    <h3>Конструктор</h3>
+
+    <p class="product-short-info">
+        Велика кількість деталей для творчості
+    </p>
+
+    <p class="product-price">1599 грн</p>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Конструктор"
+        data-price="1599">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="bear.jpg,bear-2.jpg,bear-3.jpg"
+     data-description="М’який плюшевий ведмідь для подарунків, декору та затишку.">
+
+    <img src="bear.jpg" alt="Плюшевий ведмідь">
+
+    <h3>Плюшевий ведмідь</h3>
+
+    <p class="product-short-info">
+        М’який та приємний на дотик
+    </p>
+
+    <p class="product-price">899 грн</p>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Плюшевий ведмідь"
+        data-price="899">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="car.jpg,car-2.jpg,car-3.jpg"
+     data-description="Радіокерована машинка з високою швидкістю та зручним пультом керування.">
+
+    <img src="car.jpg" alt="Машинка RC">
+
+    <h3>Машинка RC</h3>
+
+    <p class="product-short-info">
+        Радіокерована машинка з високою швидкістю
+    </p>
+
+    <p class="product-price">2399 грн</p>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Машинка RC"
+        data-price="2399">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="dino.jpg,dino-2.jpg,dino-3.jpg"
+     data-description="Іграшковий динозавр із реалістичним дизайном та рухомими елементами.">
+
+    <img src="dino.jpg" alt="Динозавр">
+
+    <h3>Динозавр</h3>
+
+    <p class="product-short-info">
+        Реалістичний дизайн та рухомі елементи
+    </p>
+
+    <p class="product-price">799 грн</p>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Динозавр"
+        data-price="799">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="drone.jpg,drone-2.jpg,drone-3.jpg"
+     data-description="Компактний дрон із камерою та простим керуванням для польотів і зйомки.">
+
+    <img src="drone.jpg" alt="Дрон">
+
+    <h3>Дрон</h3>
+
+    <p class="product-short-info">
+        Камера та легке керування
+    </p>
+
+    <p class="product-price">4999 грн</p>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Дрон"
+        data-price="4999">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
     </div>
 </section>
 
@@ -227,102 +789,220 @@
     <h2 class="section-title">Спорт</h2>
     <div class="products-container">
 
-        <div class="product-card">
-            <img src="ball.jpg" alt="Футбольний м'яч">
-            <h3>Футбольний м'яч</h3>
-            <p class="product-price">Ціна: 899 грн</p>
-            <button type="button" class="button add-to-cart-btn" data-name="Футбольний м'яч" data-price="899">
-                <span class="button__text">Додати до кошика</span>
-                <span class="button__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
-                        <line y2="19" y1="5" x2="12" x1="12"></line>
-                        <line y2="12" y1="12" x2="19" x1="5"></line>
-                    </svg>
-                </span>
-            </button>
-        </div>
+        <div class="product-card"
+     data-images="ball.jpg,ball-2.jpg,ball-3.jpg"
+     data-description="Якісний футбольний м’яч для тренувань, матчів та активного відпочинку.">
 
-        <div class="product-card">
-            <img src="racket.jpg" alt="Тенісна ракетка">
-            <h3>Тенісна ракетка</h3>
-            <p class="product-price">Ціна: 1499 грн</p>
-            <button type="button" class="button add-to-cart-btn" data-name="Тенісна ракетка" data-price="1499">
-                <span class="button__text">Додати до кошика</span>
-                <span class="button__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
-                        <line y2="19" y1="5" x2="12" x1="12"></line>
-                        <line y2="12" y1="12" x2="19" x1="5"></line>
-                    </svg>
-                </span>
-            </button>
-        </div>
+    <img src="ball.jpg" alt="Футбольний м'яч">
 
-        <div class="product-card">
-            <img src="dumbbells.jpg" alt="Гантелі">
-            <h3>Гантелі 15 кг</h3>
-            <p class="product-price">Ціна: 1199 грн</p>
-            <button type="button" class="button add-to-cart-btn" data-name="Гантелі 15 кг" data-price="1199">
-                <span class="button__text">Додати до кошика</span>
-                <span class="button__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
-                        <line y2="19" y1="5" x2="12" x1="12"></line>
-                        <line y2="12" y1="12" x2="19" x1="5"></line>
-                    </svg>
-                </span>
-            </button>
-        </div>
-        <!-- ================= MODAL ================= -->
+    <h3>Футбольний м'яч</h3>
 
-<div class="product-modal" id="productModal">
+    <p class="product-short-info">
+        Ідеально для тренувань та матчів
+    </p>
 
-    <div class="modal-content">
+    <p class="product-price">899 грн</p>
 
-        <!-- кнопка закриття -->
-        <span class="close-modal">&times;</span>
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Футбольний м'яч"
+        data-price="899">
 
-        <!-- ліва частина -->
-        <div class="modal-gallery">
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
 
-            <img src="" id="mainModalImage" class="main-modal-image">
-
-            <div class="modal-small-images">
-                <img src="" class="small-modal-img">
-                <img src="" class="small-modal-img">
-                <img src="" class="small-modal-img">
-            </div>
-
-        </div>
-
-        <!-- права частина -->
-        <div class="modal-info">
-
-            <h2 id="modalTitle"></h2>
-
-            <p id="modalPrice"></p>
-
-            <p id="modalDescription">
-                Тут буде великий опис товару.
-            </p>
-
-            <button class="button">
-                <span class="button__text">Купити</span>
-            </button>
-
-        </div>
-
-    </div>
-
+    </button>
 </div>
+
+
+<div class="product-card"
+     data-images="racket.jpg,racket-2.jpg,racket-3.jpg"
+     data-description="Легка тенісна ракетка з міцною конструкцією для комфортної гри.">
+
+    <img src="racket.jpg" alt="Тенісна ракетка">
+
+    <h3>Тенісна ракетка</h3>
+
+    <p class="product-short-info">
+        Легка та міцна конструкція
+    </p>
+
+    <p class="product-price">1499 грн</p>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Тенісна ракетка"
+        data-price="1499">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="dumbbells.jpg,dumbbells-2.jpg,dumbbells-3.jpg"
+     data-description="Набір гантелей для домашніх тренувань та розвитку сили.">
+
+    <img src="dumbbells.jpg" alt="Гантелі">
+
+    <h3>Гантелі 15 кг</h3>
+
+    <p class="product-short-info">
+        Для домашніх тренувань та сили
+    </p>
+
+    <p class="product-price">1199 грн</p>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Гантелі 15 кг"
+        data-price="1199">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="bike.jpg,bike-2.jpg,bike-3.jpg"
+     data-description="Сучасний велосипед для прогулянок містом та активного способу життя.">
+
+    <img src="bike.jpg" alt="Велосипед">
+
+    <h3>Велосипед</h3>
+
+    <p class="product-short-info">
+        Для активного способу життя
+    </p>
+
+    <p class="product-old-price">15 499 грн</p>
+<p class="product-price" data-old-price="15499">12999 грн</p>
+<span class="discount-badge">-16%</span>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Велосипед"
+        data-price="12999">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="skates.jpg,skates-2.jpg,skates-3.jpg"
+     data-description="Зручні ролики з м’якими колесами та хорошою фіксацією ноги.">
+
+    <img src="skates.jpg" alt="Ролики">
+
+    <h3>Ролики</h3>
+
+    <p class="product-short-info">
+        М’які колеса та комфортна фіксація
+    </p>
+
+    <p class="product-price">2499 грн</p>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Ролики"
+        data-price="2499">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="barbell.jpg,barbell-2.jpg,barbell-3.jpg"
+     data-description="Професійна штанга для силових тренувань та занять у спортзалі.">
+
+    <img src="barbell.jpg" alt="Штанга">
+
+    <h3>Штанга</h3>
+
+    <p class="product-short-info">
+        Професійне обладнання для сили
+    </p>
+
+    <p class="product-old-price">10 499 грн</p>
+<p class="product-price" data-old-price="10499">8999 грн</p>
+<span class="discount-badge">-14%</span>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Штанга"
+        data-price="8999">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="mat.jpg,mat-2.jpg,mat-3.jpg"
+     data-description="М’який спортивний килимок для фітнесу, йоги та домашніх тренувань.">
+
+    <img src="mat.jpg" alt="Килимок">
+
+    <h3>Килимок</h3>
+
+    <p class="product-short-info">
+        Для йоги, фітнесу та тренувань
+    </p>
+
+    <p class="product-price">999 грн</p>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Килимок"
+        data-price="999">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
+
+<div class="product-card"
+     data-images="helmet.jpg,helmet-2.jpg,helmet-3.jpg"
+     data-description="Захисний шолом для велосипедних прогулянок та активного спорту.">
+
+    <img src="helmet.jpg" alt="Шолом">
+
+    <h3>Шолом</h3>
+
+    <p class="product-short-info">
+        Захист для активного спорту
+    </p>
+
+    <p class="product-price">2199 грн</p>
+
+    <button type="button" class="button add-to-cart-btn"
+        data-name="Шолом"
+        data-price="2199">
+
+        <span class="button__text">Додати до кошика</span>
+        <span class="button__icon">+</span>
+
+    </button>
+</div>
+
 
     </div>
 </section>
 
+
     <!-- ================= FOOTER ================= -->
     <!-- Контакти + авторські права -->
-    <footer class="site-footer">
-        <p>Контакти: info@mystore.ua | +380 00 000 00 00</p>
-        <p>&copy; 2026 Мій магазин. Усі права захищені.</p>
-    </footer>
+<footer class="site-footer">
+    <p>Контакти: info@mystore.ua | +380 00 000 00 00</p>
+    <p>&copy; 2026 Мій магазин. Усі права захищені.</p>
+</footer>
 
     </main>
 <script src="script.js"></script>
