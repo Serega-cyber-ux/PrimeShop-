@@ -1,0 +1,435 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+
+    background:
+        linear-gradient(rgba(12,12,12,0.88), rgba(18,18,18,0.94)),
+        url("shop-bg.jpg") center / cover fixed no-repeat;
+        padding-top:80px;
+}
+.account-link {
+    position: fixed;
+
+    top: 23px;
+    right: 150px;
+
+    padding: 11px 16px;
+
+    border-radius: 999px;
+
+    background: rgba(255,0,0,0.16);
+    border: 1px solid rgba(255,0,0,0.4);
+
+    color: white;
+    text-decoration: none;
+
+    font-weight: 800;
+    font-size: 15px;
+
+    z-index: 7002;
+
+    transition: 0.3s;
+}
+
+.account-link:hover {
+    background: rgba(255,0,0,0.35);
+    box-shadow: 0 0 18px rgba(255,0,0,0.35);
+}
+
+body.light-theme .account-link {
+    background: rgba(255,255,255,0.9);
+    color: #111;
+
+    border: 1px solid rgba(0,0,0,0.18);
+}
+.registration-header{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:80px;
+
+    z-index:5000;
+
+    padding:0 40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    background:
+        linear-gradient(
+            90deg,
+            #111,
+            #1a0000,
+            #111
+        );
+
+    border-bottom:2px solid red;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.5);
+}
+.back-link {
+    color: white;
+    text-decoration: none;
+
+    padding: 12px 18px;
+    border-radius: 999px;
+
+    background: rgba(255,0,0,0.15);
+    border: 1px solid rgba(255,0,0,0.45);
+}
+
+.site-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.site-logo img {
+    height: 140px;
+}
+
+.registration-theme-btn {
+    width: 52px;
+    height: 52px;
+
+    border: none;
+    border-radius: 50%;
+
+    cursor: pointer;
+    font-size: 20px;
+
+    background: linear-gradient(135deg, #ff1e1e, #ff7a00);
+    color: white;
+}
+
+.registration-page {
+    min-height: calc(100vh - 80px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px;
+}
+
+.registration-card {
+    width: 100%;
+    max-width: 520px;
+
+    padding: 34px;
+
+    border-radius: 30px;
+
+    background: rgba(20,20,20,0.92);
+    border: 1px solid rgba(255,0,0,0.35);
+
+    box-shadow:
+        0 0 30px rgba(255,0,0,0.14),
+        0 18px 40px rgba(0,0,0,0.7);
+}
+
+.registration-card h1 {
+    margin-top: 0;
+    font-size: 36px;
+}
+
+.registration-card p {
+    color: #ccc;
+    line-height: 1.5;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    margin-top: 18px;
+}
+
+.input-group label {
+    color: #d4d4d4;
+}
+
+.input-group input {
+    width: 100%;
+
+    padding: 15px 18px;
+
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.08);
+
+    background: #111;
+    color: white;
+
+    font-size: 16px;
+    outline: none;
+}
+
+.input-group input:focus {
+    border-color: rgba(255,0,0,0.55);
+    box-shadow: 0 0 18px rgba(255,0,0,0.18);
+}
+
+.register-btn {
+    width: 100%;
+    height: 56px;
+
+    margin-top: 28px;
+
+    border: none;
+    border-radius: 18px;
+
+    background: linear-gradient(135deg, #c93a3a, #a9442b);
+    color: white;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+    overflow: hidden;
+
+    box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+    transition: 0.3s;
+
+}
+
+.register-btn .button__text {
+    width: calc(100% - 56px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+    font-weight: 800;
+
+    transition: 0.3s;
+}
+
+.register-btn .button__icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 56px;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0,0,0,0.18);
+
+    font-size: 28px;
+    font-weight: 900;
+
+    transition: 0.3s;
+    color: #7dff7d;
+font-size: 32px;
+}
+
+.register-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 35px rgba(255,60,0,0.65);
+
+}
+
+.register-btn:hover .button__text {
+    color: transparent;
+
+}
+
+.register-btn:hover .button__icon {
+    width: 100%;
+
+    background:
+        linear-gradient(135deg,#1fbf57,#37d86f);
+
+    color:white;
+}
+
+/* LIGHT THEME */
+
+body.light-theme {
+    background:
+        linear-gradient(rgba(255,255,255,0.88), rgba(245,245,245,0.95)),
+        url("light-bg.jpg") center / cover fixed no-repeat;
+
+    color: #111;
+}
+
+body.light-theme .registration-header {
+    background: linear-gradient(90deg, #ffffff, #f4f4f4, #ffffff);
+}
+
+body.light-theme .back-link {
+    color: #111;
+}
+
+body.light-theme .registration-card {
+    background: rgba(255,255,255,0.92);
+    color: #111;
+
+    border: 1px solid rgba(0,0,0,0.16);
+}
+
+body.light-theme .registration-card p,
+body.light-theme .input-group label {
+    color: #333;
+}
+
+body.light-theme .input-group input {
+    background: #fff;
+    color: #111;
+
+    border: 1px solid rgba(0,0,0,0.22);
+}
+
+/* ================= FOOTER ================= */
+
+.site-footer{
+    margin-top:60px;
+
+    padding:28px 20px;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            90deg,
+            #111,
+            #1a0000,
+            #111
+        );
+
+    border-top:2px solid red;
+
+    color:#ddd;
+
+    font-size:15px;
+}
+
+.site-footer p{
+    margin:6px 0;
+}
+
+body.light-theme .site-footer{
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #f4f4f4,
+            #ffffff
+        );
+
+    color:#111;
+
+    border-top:
+        2px solid rgba(255,0,0,0.45);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================= ADAPTIVE REGISTRATION ================= */
+
+@media (max-width: 768px) {
+    .registration-header {
+        height: 110px;
+        padding: 0 18px;
+    }
+
+    .site-logo img {
+        height: 140px;
+    }
+
+    .registration-theme-btn {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        width: 44px;
+        height: 44px;
+    }
+
+    .account-link {
+        top: 75px;
+        right: 18px;
+        font-size: 13px;
+        padding: 9px 12px;
+    }
+
+    .registration-page {
+        padding: 30px 15px;
+    }
+
+    .registration-card {
+        padding: 24px;
+        border-radius: 24px;
+    }
+
+    .registration-card h1 {
+        font-size: 30px;
+    }
+}

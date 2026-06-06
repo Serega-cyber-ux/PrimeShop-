@@ -24,20 +24,26 @@ document.addEventListener("DOMContentLoaded", () => {
         cartCount.textContent = totalQuantity;
     }
 
-    function addToCart(name, price, image = "cart.png", oldPrice = null) {
+    function addToCart(name, price, image = "cart.png", oldPrice = null, description = "") {
 
-    const existing = cart.find(p => p.name === name);
+    name = name.trim();
 
+    const existing = cart.find(p => p.name.trim() === name);
     if (existing) {
-        existing.quantity += 1;
-    } else {
+    existing.quantity += 1;
+
+    if (description) {
+        existing.description = description;
+    }
+} else {
         cart.push({
-            name: name,
-            price: Number(price),
-            oldPrice: oldPrice ? Number(oldPrice) : null,
-            quantity: 1,
-            image: image
-        });
+    name: name,
+    price: Number(price),
+    oldPrice: oldPrice ? Number(oldPrice) : null,
+    quantity: 1,
+    image: image,
+    description: description
+});
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -71,7 +77,32 @@ function showToast(text) {
 
     }, 4000);
 }
+function openCartProductModal(product) {
+    const modal = document.getElementById("productModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalPrice = document.getElementById("modalPrice");
+    const modalDescription = document.getElementById("modalDescription");
+    const mainModalImage = document.getElementById("mainModalImage");
+    const modalCartButton = document.querySelector(".modal-cart-btn");
 
+    if (!modal) return;
+
+    modalTitle.textContent = product.name;
+    modalPrice.textContent = formatPrice(product.price);
+    modalDescription.textContent =
+    product.description || "Детальна інформація про товар.";
+
+    mainModalImage.src = product.image || "cart.png";
+    mainModalImage.alt = product.name;
+
+    modalCartButton.dataset.name = product.name;
+    modalCartButton.dataset.price = product.price;
+    modalCartButton.dataset.image = product.image || "cart.png";
+    modalCartButton.dataset.oldPrice = product.oldPrice || "";
+    modalCartButton.dataset.description = product.description || "";
+
+    modal.style.display = "flex";
+}
     function renderCart() {
     const cartContainer = document.getElementById("cartContainer");
     if (!cartContainer) return;
@@ -153,6 +184,10 @@ function showToast(text) {
         `;
 
         cartContainer.appendChild(card);
+
+        card.addEventListener("click", () => {
+            openCartProductModal(product);
+        });
     });
 
     let discount = 0;
@@ -171,7 +206,8 @@ const total = subtotal;
     if (totalPriceElement) totalPriceElement.textContent = formatPrice(total);
 
     document.querySelectorAll(".plus-btn").forEach(button => {
-        button.addEventListener("click", () => {
+       button.addEventListener("click", (event) => {
+    event.stopPropagation();
             const index = button.dataset.index;
             cart[index].quantity += 1;
 
@@ -182,7 +218,8 @@ const total = subtotal;
     });
 
     document.querySelectorAll(".minus-btn").forEach(button => {
-        button.addEventListener("click", () => {
+        button.addEventListener("click", (event) => {
+    event.stopPropagation();
             const index = button.dataset.index;
 
             if (cart[index].quantity > 1) {
@@ -198,7 +235,8 @@ const total = subtotal;
     });
 
     document.querySelectorAll(".remove-btn").forEach(button => {
-        button.addEventListener("click", () => {
+        button.addEventListener("click", (event) => {
+    event.stopPropagation();
             const index = button.dataset.index;
 
             cart.splice(index, 1);
@@ -223,7 +261,30 @@ if (clearButton) {
         updateCartCount();
     });
 }
+/* ================= ОФОРМЛЕННЯ ================= */
 
+/* ================= ПЕРЕХІД ДО ОФОРМЛЕННЯ ================= */
+
+const checkoutBtn = document.getElementById("checkoutBtn");
+
+if (checkoutBtn) {
+    checkoutBtn.addEventListener("click", () => {
+
+        if (cart.length === 0) {
+            showToast("Кошик порожній");
+            return;
+        }
+
+        const savedUser = JSON.parse(localStorage.getItem("currentUser"));
+
+        if (!savedUser) {
+            window.location.href = "registration.html";
+        } else {
+            window.location.href = "success.html";
+        }
+
+    });
+}
     // Перехід у кошик
     window.goToCart = function () {
         window.location.href = "cart.html";
@@ -320,7 +381,7 @@ if (clearButton) {
     function openProductModal(card) {
         if (!modal) return;
 
-        const title = card.querySelector("h3")?.textContent || "Товар";
+        const title = card.querySelector("h3")?.textContent.trim() || "Товар";
         const priceText = card.querySelector(".product-price")?.textContent || "Ціна не вказана";
         const price = card.querySelector(".add-to-cart-btn")?.dataset.price || "0";
         const description = card.dataset.description || `Детальна інформація про товар: ${title}.`;
@@ -337,6 +398,7 @@ if (clearButton) {
         const oldPrice = card.querySelector(".product-price")?.dataset.oldPrice || "";
 
         modalCartButton.dataset.oldPrice = oldPrice;
+        modalCartButton.dataset.description = description;
 
         mainModalImage.src = images[0];
         mainModalImage.alt = title;
@@ -398,7 +460,11 @@ addButtons.forEach(button => {
     ? productCard.querySelector(".product-price")?.dataset.oldPrice
     : null;
 
-addToCart(name, price, image, oldPrice);
+const description = productCard
+    ? productCard.dataset.description
+    : "";
+
+addToCart(name, price, image, oldPrice, description);
 
     });
 
@@ -425,8 +491,10 @@ if (modalCartButton) {
 
         const oldPrice = modalCartButton.dataset.oldPrice || null;
 
-addToCart(name, price, image, oldPrice);
+        const description = modalCartButton.dataset.description || "";
 
+addToCart(name, price, image, oldPrice, description);
+renderCart();
     });
 
 }
@@ -436,7 +504,7 @@ addToCart(name, price, image, oldPrice);
             }
         });
     }
-});
+
 
 
 
@@ -499,3 +567,336 @@ if (themeToggle) {
     });
 
 }
+
+
+
+
+
+
+
+
+
+
+
+/* ================= ОФОРМЛЕННЯ ЗАМОВЛЕННЯ ================= */
+
+const summaryProducts = document.getElementById("summaryProducts");
+
+if (summaryProducts) {
+
+    const summaryCount = document.getElementById("summaryCount");
+    const summaryPrice = document.getElementById("summaryPrice");
+    const summaryDiscount = document.getElementById("summaryDiscount");
+    const summaryTotal = document.getElementById("summaryTotal");
+
+    let totalItems = 0;
+    let totalPrice = 0;
+    let totalDiscount = 0;
+
+    cart.forEach(product => {
+
+        totalItems += product.quantity;
+        totalPrice += product.price * product.quantity;
+
+        if (product.oldPrice) {
+            totalDiscount +=
+                (product.oldPrice - product.price) * product.quantity;
+        }
+
+        const div = document.createElement("div");
+
+        div.className = "summary-product";
+
+        div.innerHTML = `
+            <span>
+                ${product.name} × ${product.quantity}
+            </span>
+
+            <b>
+                ${formatPrice(product.price * product.quantity)}
+            </b>
+        `;
+
+        summaryProducts.appendChild(div);
+    });
+
+    summaryCount.textContent = totalItems;
+    summaryPrice.textContent = formatPrice(totalPrice);
+    summaryDiscount.textContent = formatPrice(totalDiscount);
+    summaryTotal.textContent = formatPrice(totalPrice);
+}
+/* ================= ЗБЕРЕЖЕННЯ АНКЕТИ ================= */
+
+
+/* Телефон: тільки цифри і максимум 10 */
+
+const phoneInput = document.getElementById("userPhone");
+
+if (phoneInput) {
+
+    phoneInput.addEventListener("input", () => {
+
+        phoneInput.value = phoneInput.value
+            .replace(/\D/g, "")
+            .slice(0, 10);
+    });
+
+}
+
+/* ================= ПІДТВЕРДЖЕННЯ ЗАМОВЛЕННЯ ================= */
+
+const confirmOrderBtn = document.getElementById("confirmOrderBtn");
+
+if (confirmOrderBtn) {
+    confirmOrderBtn.addEventListener("click", () => {
+
+        const name = document.getElementById("userName").value.trim();
+        const phone = document.getElementById("userPhone").value.trim();
+        const email = document.getElementById("userEmail").value.trim();
+        const city = document.getElementById("userCity").value.trim();
+        const address = document.getElementById("userAddress").value.trim();
+        const comment = document.getElementById("userComment").value.trim();
+
+        const deliveryMethod = document.querySelector("select").value;
+
+        const payment = document.querySelector("input[name='payment']:checked")
+            ?.nextElementSibling.textContent.trim();
+
+        if (!name || !phone || !email || !city || !address) {
+            alert("Заповніть усі обовʼязкові поля");
+            return;
+        }
+
+        if (phone.length !== 10) {
+            alert("Телефон має містити 10 цифр");
+            return;
+        }
+
+        if (cart.length === 0) {
+            alert("Кошик порожній");
+            return;
+        }
+
+        let total = 0;
+
+        cart.forEach(product => {
+            total += product.price * product.quantity;
+        });
+
+        const order = {
+            id: Date.now(),
+            date: new Date().toLocaleString("uk-UA"),
+
+            customer: {
+                name: name,
+                phone: phone,
+                email: email
+            },
+
+            delivery: {
+                city: city,
+                address: address,
+                method: deliveryMethod
+            },
+
+            payment: payment,
+            comment: comment,
+
+            products: cart,
+            total: total
+        };
+
+        const orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+        orders.push(order);
+
+        localStorage.setItem("orders", JSON.stringify(orders));
+
+        cart = [];
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        window.location.href = "orders.html";
+    });
+}
+/* ================= МОЇ ЗАМОВЛЕННЯ ================= */
+
+const ordersContainer = document.getElementById("ordersContainer");
+
+if (ordersContainer) {
+    const orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+    if (orders.length === 0) {
+        ordersContainer.innerHTML = `
+            <div class="empty-orders">
+                <h2>Замовлень ще немає</h2>
+                <p>Після оформлення покупки вона зʼявиться тут.</p>
+            </div>
+        `;
+    } else {
+        ordersContainer.innerHTML = "";
+
+        orders.reverse().forEach(order => {
+            const card = document.createElement("div");
+            card.className = "order-card";
+
+            card.innerHTML = `
+                <h2>Замовлення #${order.id}</h2>
+
+                <div class="order-info">
+                    <p><b>Дата:</b> ${order.date}</p>
+                    <p><b>Імʼя:</b> ${order.customer.name}</p>
+                    <p><b>Телефон:</b> ${order.customer.phone}</p>
+                    <p><b>Email:</b> ${order.customer.email}</p>
+                    <p><b>Місто:</b> ${order.delivery.city}</p>
+                    <p><b>Адреса:</b> ${order.delivery.address}</p>
+                    <p><b>Доставка:</b> ${order.delivery.method}</p>
+                    <p><b>Оплата:</b> ${order.payment}</p>
+                    ${
+                        order.comment
+                        ? `<p><b>Коментар:</b> ${order.comment}</p>`
+                        : ""
+                    }
+                </div>
+
+                <div class="order-products">
+                    ${order.products.map(product => `
+                        <div class="order-product">
+                            <span>${product.name} × ${product.quantity}</span>
+                            <b>${formatPrice(product.price * product.quantity)}</b>
+                        </div>
+                    `).join("")}
+                </div>
+
+                <div class="order-total">
+                    Разом: ${formatPrice(order.total)}
+                </div>
+            `;
+
+            ordersContainer.appendChild(card);
+        });
+    }
+}
+/* ================= РЕЄСТРАЦІЯ ================= */
+
+const registerPhone = document.getElementById("registerPhone");
+
+if (registerPhone) {
+    registerPhone.addEventListener("input", () => {
+        registerPhone.value = registerPhone.value
+            .replace(/\D/g, "")
+            .slice(0, 10);
+    });
+}
+
+const registerBtn = document.getElementById("registerBtn");
+
+if (registerBtn) {
+    registerBtn.addEventListener("click", () => {
+
+        const name = document.getElementById("registerName").value.trim();
+        const phone = document.getElementById("registerPhone").value.trim();
+        const email = document.getElementById("registerEmail").value.trim();
+        const password = document.getElementById("registerPassword").value.trim();
+
+        if (!name || !phone || !email || !password) {
+            alert("Заповніть усі поля");
+            return;
+        }
+
+        if (phone.length !== 10) {
+            alert("Телефон має містити 10 цифр");
+            return;
+        }
+
+        if (password.length < 6) {
+            alert("Пароль має містити мінімум 6 символів");
+            return;
+        }
+
+        const newUser = {
+            name: name,
+            phone: phone,
+            email: email
+        };
+
+        localStorage.setItem("currentUser", JSON.stringify(newUser));
+
+        window.location.href = "success.html";
+    });
+}
+
+/* ================= АВТОЗАПОВНЕННЯ CHECKOUT З АКАУНТА ================= */
+
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+if (currentUser) {
+    const userName = document.getElementById("userName");
+    const userPhone = document.getElementById("userPhone");
+    const userEmail = document.getElementById("userEmail");
+
+    if (userName) userName.value = currentUser.name;
+    if (userPhone) userPhone.value = currentUser.phone;
+    if (userEmail) userEmail.value = currentUser.email;
+}
+/* ================= АКАУНТ У ХЕДЕРІ ================= */
+
+const accountLink = document.getElementById("accountLink");
+
+if (accountLink) {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+    if (currentUser) {
+        accountLink.textContent = "👤 " + currentUser.name;
+        accountLink.href = "profile.html";
+    } else {
+        accountLink.textContent = "👤 Увійти";
+        accountLink.href = "registration.html";
+    }
+}
+/* ================= PROFILE PAGE ================= */
+
+const profileName = document.getElementById("profileName");
+const profilePhone = document.getElementById("profilePhone");
+const profileEmail = document.getElementById("profileEmail");
+
+if (profileName && profilePhone && profileEmail) {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+    if (!currentUser) {
+        window.location.href = "registration.html";
+    } else {
+        profileName.textContent = currentUser.name;
+        profilePhone.textContent = currentUser.phone;
+        profileEmail.textContent = currentUser.email;
+    }
+}
+
+const logoutBtn = document.getElementById("logoutBtn");
+
+if (logoutBtn) {
+
+    logoutBtn.addEventListener("click", () => {
+
+        /* видаляємо акаунт */
+        localStorage.removeItem("currentUser");
+
+        /* очищаємо кошик */
+        localStorage.removeItem("cart");
+
+        /* очищаємо замовлення */
+        localStorage.removeItem("orders");
+
+        /* оновлюємо UI */
+        cart = [];
+
+        /* перекидаємо */
+        window.location.href = "index.html";
+
+    });
+
+}
+});
+
+
+
+

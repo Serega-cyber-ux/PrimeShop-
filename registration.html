@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реєстрація</title>
+    <link rel="stylesheet" href="registration.css">
+</head>
+<body>
+
+<header class="registration-header">
+    <a href="profile.html" id="accountLink" class="account-link">
+    👤 Увійти
+</a>
+    <a href="cart.html" class="back-link">← До кошика</a>
+
+    <a href="index.html" class="site-logo">
+        <img src="logo.png" alt="PrimeShop">
+    </a>
+
+    <button id="themeToggle" class="registration-theme-btn" type="button">
+        ☀️
+    </button>
+</header>
+
+<main class="registration-page">
+    <section class="registration-card">
+        <h1>Створення акаунта</h1>
+        <p>Зареєструйтесь, щоб оформити замовлення швидше.</p>
+
+        <div class="input-group">
+            <label>Ім’я</label>
+            <input id="registerName" type="text" placeholder="Ваше ім’я">
+        </div>
+
+        <div class="input-group">
+            <label>Телефон</label>
+            <input id="registerPhone" type="tel" placeholder="0971234567" maxlength="10">
+        </div>
+
+        <div class="input-group">
+            <label>Email</label>
+            <input id="registerEmail" type="email" placeholder="example@gmail.com">
+        </div>
+
+        <div class="input-group">
+            <label>Пароль</label>
+            <input id="registerPassword" type="password" placeholder="Мінімум 6 символів">
+        </div>
+
+        <button id="registerBtn" class="register-btn" type="button">
+            <span class="button__text">Створити акаунт</span>
+            <span class="button__icon">✓</span>
+        </button>
+    </section>
+</main>
+<footer class="site-footer">
+    <p>Контакти: info@mystore.ua | +380 00 000 00 00</p>
+    <p>&copy; 2026 PrimeShop. Усі права захищені.</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

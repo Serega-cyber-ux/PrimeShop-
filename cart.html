@@ -7,8 +7,33 @@
     <link rel="stylesheet" href="cart.css">
 </head>
 <body>
+    <div id="toastContainer"></div>
+
+<div class="product-modal" id="productModal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+
+        <div class="modal-gallery">
+            <img src="" id="mainModalImage" class="main-modal-image">
+        </div>
+
+        <div class="modal-info">
+            <h2 id="modalTitle"></h2>
+            <p id="modalPrice"></p>
+            <p id="modalDescription"></p>
+
+            <button type="button" class="button modal-cart-btn">
+                <span class="button__text">Додати до кошика</span>
+                <span class="button__icon">+</span>
+            </button>
+        </div>
+    </div>
+</div>
 
 <header class="cart-header">
+    <a href="profile.html" id="accountLink" class="account-link">
+    👤 Увійти
+</a>
     <a href="index.html" class="back-link">← До магазину</a>
 
     <a href="index.html" class="site-logo">
@@ -57,12 +82,17 @@
             <b id="totalPrice">0 грн</b>
         </div>
 
-        <button class="checkout-btn">Оформити замовлення</button>
+        <button id="checkoutBtn" class="checkout-btn">
+    Оформити замовлення
+</button>
         <button id="clearCart" class="clear-btn">Очистити кошик</button>
     </aside>
 
 </main>
-
+<footer class="site-footer">
+    <p>Контакти: info@mystore.ua | +380 00 000 00 00</p>
+    <p>&copy; 2026 PrimeShop. Усі права захищені.</p>
+</footer>
 <script src="script.js"></script>
 </body>
 </html>

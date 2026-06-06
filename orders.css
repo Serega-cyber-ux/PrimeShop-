@@ -1,0 +1,366 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+
+    background:
+        linear-gradient(rgba(12,12,12,0.88), rgba(18,18,18,0.94)),
+        url("shop-bg.jpg") center / cover fixed no-repeat;
+        padding-top:80px;
+}
+
+.orders-header{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:80px;
+
+    z-index:5000;
+
+    padding:0 40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    background:
+        linear-gradient(
+            90deg,
+            #111,
+            #1a0000,
+            #111
+        );
+
+    border-bottom:2px solid red;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.5);
+}
+
+.back-link {
+    color: white;
+    text-decoration: none;
+
+    padding: 12px 18px;
+    border-radius: 999px;
+
+    background: rgba(255,0,0,0.15);
+    border: 1px solid rgba(255,0,0,0.45);
+}
+
+.site-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.site-logo img {
+    height: 220px;
+
+    width: 200px;
+
+    object-fit: contain;
+
+    transition: 0.3s;
+}
+.account-link {
+    position: fixed;
+
+    top: 23px;
+    right: 150px;
+
+    padding: 11px 16px;
+
+    border-radius: 999px;
+
+    background: rgba(255,0,0,0.16);
+    border: 1px solid rgba(255,0,0,0.4);
+
+    color: white;
+    text-decoration: none;
+
+    font-weight: 800;
+    font-size: 15px;
+
+    z-index: 7002;
+
+    transition: 0.3s;
+}
+
+.account-link:hover {
+    background: rgba(255,0,0,0.35);
+    box-shadow: 0 0 18px rgba(255,0,0,0.35);
+}
+
+body.light-theme .account-link {
+    background: rgba(255,255,255,0.9);
+    color: #111;
+
+    border: 1px solid rgba(0,0,0,0.18);
+}
+.site-logo img {
+    height: 120px;
+}
+
+.orders-theme-btn {
+    width: 52px;
+    height: 52px;
+
+    border: none;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    background: linear-gradient(135deg, #ff1e1e, #ff7a00);
+    color: white;
+
+    font-size: 20px;
+}
+
+.orders-page {
+    max-width: 1200px;
+    margin: 45px auto;
+    padding: 0 25px;
+}
+
+.orders-page h1 {
+    font-size: 42px;
+    text-shadow: 0 0 14px rgba(255,0,0,0.45);
+}
+
+.order-card {
+    margin-bottom: 28px;
+    padding: 28px;
+
+    border-radius: 28px;
+
+    background: rgba(20,20,20,0.9);
+    border: 1px solid rgba(255,0,0,0.28);
+
+    box-shadow:
+        0 0 25px rgba(255,0,0,0.1),
+        0 15px 35px rgba(0,0,0,0.55);
+}
+
+.order-card h2 {
+    margin-top: 0;
+}
+
+.order-info {
+    color: #d8d8d8;
+    line-height: 1.7;
+}
+
+.order-products {
+    margin-top: 20px;
+}
+
+.order-product {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.order-total {
+    margin-top: 20px;
+
+    font-size: 24px;
+    font-weight: 900;
+
+    color: #ff3b3b;
+}
+
+.empty-orders {
+    padding: 40px;
+
+    border-radius: 24px;
+
+    background: rgba(20,20,20,0.9);
+    border: 1px solid rgba(255,0,0,0.28);
+
+    text-align: center;
+}
+
+/* LIGHT THEME */
+
+body.light-theme {
+    background:
+        linear-gradient(rgba(255,255,255,0.88), rgba(245,245,245,0.95)),
+        url("light-bg.jpg") center / cover fixed no-repeat;
+
+    color: #111;
+}
+
+body.light-theme .orders-header {
+    background: linear-gradient(90deg, #ffffff, #f4f4f4, #ffffff);
+}
+
+body.light-theme .back-link {
+    color: #111;
+}
+
+body.light-theme .order-card,
+body.light-theme .empty-orders {
+    background: rgba(255,255,255,0.92);
+    color: #111;
+
+    border: 1px solid rgba(0,0,0,0.16);
+}
+
+body.light-theme .order-info {
+    color: #333;
+}
+
+body.light-theme .order-product {
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+}
+/* ================= FOOTER ================= */
+
+.site-footer{
+    margin-top:60px;
+
+    padding:28px 20px;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            90deg,
+            #111,
+            #1a0000,
+            #111
+        );
+
+    border-top:2px solid red;
+
+    color:#ddd;
+
+    font-size:15px;
+}
+
+.site-footer p{
+    margin:6px 0;
+}
+
+body.light-theme .site-footer{
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #f4f4f4,
+            #ffffff
+        );
+
+    color:#111;
+
+    border-top:
+        2px solid rgba(255,0,0,0.45);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================= ADAPTIVE ORDERS ================= */
+
+@media (max-width: 768px) {
+    .orders-header {
+        height: 110px;
+        padding: 0 18px;
+    }
+
+    .site-logo img {
+        height: 130px;
+    }
+
+    .orders-theme-btn {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        width: 44px;
+        height: 44px;
+    }
+
+    .account-link {
+        top: 75px;
+        right: 18px;
+        font-size: 13px;
+        padding: 9px 12px;
+    }
+
+    .orders-page {
+        padding: 0 15px;
+        margin-top: 35px;
+    }
+
+    .orders-page h1 {
+        font-size: 32px;
+    }
+
+    .order-card {
+        padding: 22px;
+        border-radius: 22px;
+    }
+
+    .order-product {
+        flex-direction: column;
+        gap: 6px;
+    }
+}
